@@ -1,0 +1,10 @@
+Inicializar mongodb:
+-En una terminal iniciar el servidor con mongod.
+-En otra terminal(para meter comandos): mongo
+
+-Para crear la libreria para el proyecto:
+npm install mongoose --save
+
+Para crear una base de datos:
+-use "base_de_datos"
+
