@@ -8,5 +8,14 @@ html(lang='en')
     // Optional theme
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', integrity='sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r', crossorigin='anonymous')
     link(rel='stylesheet', type='text/css', href='style.css', media='screen')
-  body.container .col-md-offset-4
+  body(class="container col-md-offset-4")
+    nav(class="large-padding")
+      ul(class="no list")
+        li(class="col-md-3 inline-block")
+          a Food Facilito
+        li(class="col-md-3 inline-block")
+          a Menu
+        li(class="col-md-3 inline-block")
+          a Acerca de
+        
     block contenido
