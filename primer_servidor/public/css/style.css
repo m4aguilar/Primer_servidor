@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #00BFFF;
+  //background-color: #00BFFF;
 }
 
 a {
@@ -9,4 +9,28 @@ a {
 }
 br{
   margin-top: 10px;
+}
+img{
+  max-width: 100%;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.no-float{
+  float: none;
+}
+.inline-block{
+  float none;
+  display: inline-block;
+  margin-right: -4px;
+}
+
+.pacifico{
+  font-family: 'pacifico', cursive;
+}
+
+.right-space{
+  margin-right: 1em;
 }
