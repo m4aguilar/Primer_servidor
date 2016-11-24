@@ -6,6 +6,10 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
 }
 br{
   margin-top: 10px;
@@ -33,4 +37,25 @@ img{
 
 .right-space{
   margin-right: 1em;
+}
+
+.no-list {
+  list-style-type: none;
+}
+.mediano {
+  font-size: 1.5em;
+}
+.color-gris{
+  background-color: #B5B5B5;
+}
+
+.large-padding{
+  padding: 10px 15px;
+}
+.navbar{
+  margin-top: -50px;
+  background-color: #B5B5B5;
+}
+.navbar-default{
+  background-color: #B5B5B5;
 }

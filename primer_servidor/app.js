@@ -1,6 +1,15 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var cloudinary = require('cloudinary');
+
+//Configuramos cloudinary
+cloudinary.config({
+  cloud_name: "bull4m",
+  api_key: "685169279778821",
+  api_secret: "iV7-bTmcpggAE3HYofhEHApd1h8"
+});
 
 var app = express();
 
@@ -14,6 +23,8 @@ mongoose.connect("mongodb://localhost/primer_servidor");
 //Para decirle a express que se va a usar body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+var uploader = multer({dest: "./uploads"});
+var middleware_upload = uploader.single('imagen');
 
 
 //Definimos el schema del login
@@ -40,18 +51,37 @@ app.get("/", function(req, res){
     res.render("index");
 });
 
-app.post("/menu", function(req, res){
+app.get("/menu", function(req, res){
+  Product.find(function(error, documento){
+    if(error){console.log(error); }
+    res.render("menu/index",{products: documento})
+  });
+});
+
+app.post("/menu",middleware_upload, function(req, res){
   if(req.body.password == "1234"){
     var data = {
         title: req.body.title,
         description: req.body.description,
-        imageUrl: "hola.png",
+        imageUrl: "file.png",
         price: req.body.price
     }
     var product = new Product(data);
-    console.log(req.body);
-    product.save();
-    res.render("index");
+
+      if(req.file){
+        cloudinary.uploader.upload(req.file.path,
+          function(result){
+            product.imageUrl = result.url;
+            product.save();
+            //console.log(req.body);
+            //console.log(product.imageUrl);
+            res.render("index");
+          }
+        );
+      }
+    //console.log(req.body);
+    //product.save();
+    //res.render("index");
   }else {
     res.render("menu/new");
   }
